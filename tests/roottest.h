@@ -7,26 +7,41 @@ extern "C" {
 #include "root.h"
 }
 
-/*
-TEST(rootTest, num0) {
-    double *a=roots(0, 0, 0);
-    ASSERT_EQ(a[0], a[1]);
-    ASSERT_EQ(a[1], nullptr);
-}
-*/
-
-TEST(rootTest, positive) {
+TEST(rootTest, positive_numbers) {
     double *a=roots(1, 2, 1);
     ASSERT_EQ(a[0], 1);
     ASSERT_EQ(a[1], -1);
     ASSERT_EQ(a[2], -1);
 }
 
-TEST(rootTest, negative) {
+TEST(rootTest, negative_numbers) {
     double *a=roots(-1, -2, -1);
     ASSERT_EQ(a[0], 1);
     ASSERT_EQ(a[1], -1);
     ASSERT_EQ(a[2], -1);
 }
 
+TEST(rootTest, mixed_numbers_1) {
+    double *a=roots(1, -2, 1);
+    ASSERT_EQ(a[0], 1);
+    ASSERT_EQ(a[1], 1);
+    ASSERT_EQ(a[2], 1);
+}
+
+TEST(rootTest, mixed_numbers_2) {
+    double *a=roots(-1, 2, -1);
+    ASSERT_EQ(a[0], 1);
+    ASSERT_EQ(a[1], 1);
+    ASSERT_EQ(a[2], 1);
+}
+
+TEST(rootTest, D_lessthan_0) {
+    double *a=roots(1, 2, 2);
+    ASSERT_EQ(a[0], 0);
+}
+
+TEST(rootTest, D_morethan_0) {
+    double *a=roots(-1, 3, -1);
+    ASSERT_EQ(a[0], 2);
+}
 #endif // ROOTTEST_H
