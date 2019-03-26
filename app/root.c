@@ -20,5 +20,11 @@ double* roots(double a, double b, double c){
         root[2]=(-b-sqrt(b*b-4*a*c))/(2*a);
     }
     
+    if(a==0){
+        root[0] = 1;
+        root[1] = -c/b;
+        root[2] = -c/b;
+    }
+    
     return root;
 }
